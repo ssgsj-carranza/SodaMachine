@@ -1,3 +1,6 @@
+import cans
+import coins
+import user_interface
 from coins import Coin
 from cans import Can
 
@@ -111,7 +114,7 @@ class SodaMachine:
         """Determines amount of change needed by finding difference of payment amount and can price"""
         return round(selected_soda_price - total_payment, 2)
 
-    def calculate_coin_value(self, coin_list):
+    def calculate_coin_value(self, coin_list, total_value=None):
         """Takes in a list of coins, returns the monetary value of list."""
         for coin in coin_list:
             total_value += coin.value
@@ -125,7 +128,7 @@ class SodaMachine:
                 return can
         return None
 
-    def return_inventory(chosen_soda):
+    def return_inventory(self, chosen_soda):
         """Re-adds a remove can back to inventory upon unsuccessful purchase attempt"""
         self.inventory.append(chosen_soda)
 
